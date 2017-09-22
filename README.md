@@ -1,7 +1,7 @@
 # Home-Assistant-Config
 My Home Assistant Configuration, based on Raspberry Pi 3 and HASS.IO.
 
-!Attention: The readme is under construction (like this repository)
+[![Build Status](https://travis-ci.org/MicheleCatalano/Home-Assistant-Config.svg?branch=master)](https://travis-ci.org/MicheleCatalano/Home-Assistant-Config)
 
 ## My Setup
 1. [Raspberry Pi 3](azon.ly/XbiQ);
