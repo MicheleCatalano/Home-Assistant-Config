@@ -4,7 +4,7 @@ sensor.Indice_UV:
     friendly_name: Indice UV
 
 sensor.Terremoti_any:
-    friendly_name: Terremoti (7gg, raggio 80km)
+    friendly_name: Terremoti (7giorni/r=80km)
     icon: mdi:earth
 sensor.dark_sky_cloud_coverage:
     friendly_name: Copertura nuovolosa
