@@ -37,7 +37,7 @@ home-assistant.log
 ozw_log.txt
 
 # Development files
-custom_components/
+#custom_components/
 
 # Others
 ._.DS_Store
