@@ -1,0 +1,20 @@
+- platform: wake_on_lan
+  mac_address: "1C:1B:0D:60:4A:7E"
+  name: "WOL"
+  host: "10.0.0.133"
+
+- platform: command_line
+  switches:
+    win10fisso:
+      command_off: "net rpc shutdown -I 10.0.0.133 -U Enza%iseep170 -f"
+
+- platform: template
+  switches:
+    win10onoff:
+      value_template: '{{ states.switch.wol.state }}' # "{% if is_state('WOL', 'on') %}on{% else %}off{% endif %}"
+      turn_on:
+        service: switch.turn_on
+        entity_id: switch.WOL
+      turn_off:
+        service: switch.turn_off
+        entity_id: switch.win10fisso

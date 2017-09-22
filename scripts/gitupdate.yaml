@@ -1,0 +1,4 @@
+alias: gitupdate
+sequence:
+  - service: shell_command.gitupdate
+  

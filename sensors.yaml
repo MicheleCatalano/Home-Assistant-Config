@@ -1,0 +1,112 @@
+- platform: time_date
+  display_options:
+   - 'time'
+   - 'date'
+   - 'date_time'
+   - 'time_date'
+
+#- platform: yr
+#  monitored_conditions:
+#   - temperature
+#   - precipitation
+#   - windSpeed
+#   - pressure
+#   - windDirection
+
+#- platform: wunderground
+#  api_key: !secret wunderground_api_key
+#  monitored_conditions:
+#    - weather
+#    - temp_f
+#    - feelslike_f
+#    - heat_index_f
+#    - wind_mph
+#    - relative_humidity
+#    - visibility_mi
+#    - UV
+
+- platform: darksky
+  api_key: !secret darksky_api_key
+  monitored_conditions:
+    - summary
+    #- nearest_storm_distance
+    #- nearest_storm_bearing
+    #- precip_type
+    - precip_intensity
+    - precip_probability
+    - temperature
+    #- apparent_temperature
+    #- dew_point
+    - wind_speed
+    - wind_bearing
+    - cloud_cover
+    - humidity
+    - pressure
+    #- visibility
+    #- minutely_summary
+    #- hourly_summary
+    #- daily_summary
+    - temperature_max
+    - temperature_min
+    #- apparent_temperature_max
+    #- apparent_temperature_min
+    #- precip_intensity_max
+
+- platform: speedtest
+  minute: 30
+  hour:
+    - 0
+    - 6
+    - 12
+    - 18
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+#- platform: transmission
+#  host:
+#  port: 9092
+#  monitored_variables:
+#    - 'current_status'
+#    - 'download_speed'
+#    - 'upload_speed'
+
+#- platform: template
+#  sensors:
+#    iphone:
+#      friendly_name: 'iPhone'
+#      value_template: "{% if is_state('device_tracker.iphone', 'home') %}System up{% else %}down{% endif %}"
+
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /
+    - type: memory_free
+    - type: memory_use_percent
+    - type: memory_use
+    - type: processor_use
+    - type: ipv4_address
+      arg: eth0
+
+- platform: command_line
+  name: Uptime OS
+  command: uptime | sed 's/.*up \([^,]*\), .*/\1/'
+
+- platform: command_line
+  name: CPU Temp
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "ºC"
+  value_template: '{{ value | multiply(0.001) | round(1) }}'
+
+- platform: rest
+  scan_interval: 86400
+  resource: http://ip.jsontest.com
+  name: External IP
+  value_template: '{{ value_json.ip }}'
+
+- platform: geo_rss_events
+  name: Terremoti
+  url: http://info.terremoti.ingv.it/feed/atom/all_week
+  radius: 80
+  unit_of_measurement: Eventi

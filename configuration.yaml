@@ -1,0 +1,140 @@
+homeassistant:
+  name: Home
+  latitude: !secret hass_latitude
+  longitude: !secret hass_longitude
+  elevation: 240
+  unit_system: metric
+  time_zone: Europe/Rome
+  customize: !include customize.yaml
+frontend:
+  themes: !include themes.yaml
+config:
+http:
+  api_password: !secret http_password
+  base_url: !secret base_url
+  # login_attempts_threshold: 3
+  # Uncomment this if you are using SSL or running in Docker etc
+  # base_url: example.duckdns.org:8123
+# Checks for available updates
+#updater:
+# Discover some devices automatically
+#discovery:
+hassio:
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+# Enables support for tracking state changes over time.
+recorder:
+   purge_days: 7 # Delete events and states older than 1 week
+   exclude:
+    domains:
+      - sun
+      - automation
+      - weblink
+      - updater
+      - camera
+      - group
+      - binary_sensor
+    entities:
+      - sensor.last_boot
+      - sensor.date
+      - sensor.date__time
+      - sensor.time__date
+      - sensor.time
+      - sensor.alarm_clock_hour
+      - sensor.alarm_clock_minute
+      - sensor.alarm_clock_time
+      - sensor.alarm_clock_time
+      - sensor.alarm_clock_time_long
+# Enables support for tracking state changes over time.
+history:
+  exclude:
+   domains:
+     - sun
+     - automation
+     - weblink
+     - updater
+     - camera
+     - group
+     - binary_sensor
+   entities:
+     - sensor.last_boot
+     - sensor.date
+     - sensor.date__time
+     - sensor.time__date
+     - sensor.time
+     - sensor.alarm_clock_hour
+     - sensor.alarm_clock_minute
+     - sensor.alarm_clock_time
+     - sensor.alarm_clock_time
+     - sensor.alarm_clock_time_long
+
+# View all events in a logbook
+logbook:
+sun:
+# Text to speech
+tts:
+  - platform: google
+#ios:
+mqtt:
+  broker: localhost
+  port: 1883
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  discovery: true
+  client_id: home-assistant-1
+
+
+#####################
+####Includes vari####
+#####################
+automation old: !include automations/automations_old.yaml
+automation: !include automations/automations.yaml
+binary_sensor: !include binary_sensors.yaml
+#camera: !include cameras.yaml waiting for next release that correct ffmpeg bug
+group: !include groups.yaml
+device_tracker: !include device_tracker.yaml
+script: !include_dir_named scripts
+sensor: !include sensors.yaml
+switch: !include_dir_merge_list switch
+shell_command: !include shell_commands.yaml
+
+telegram_bot:
+  platform: polling
+  api_key: !secret telegram_bot_api
+  allowed_chat_ids:
+    - !secret telegram_chat_id
+
+notify:
+  - name: HASS_notifier_bot
+    platform: telegram
+    chat_id: !secret telegram_chat_id
+
+zone:
+  name: Cipriani Marinelli
+  latitude: !secret CM_latitude
+  longitude: !secret CM_longitude
+  radius: 250
+  icon: mdi:flag
+
+
+######################
+#### Panels & Tests###
+######################
+weblink:
+  entities:
+    - name: AccessPoint TPlink 2
+      url: http://10.0.0.252
+      icon: mdi:access-point-network
+    - name: AccessPoint TPlink 1
+      url: http://10.0.0.251
+      icon: mdi:access-point-network
+
+
+input_select:
+  hass_template:
+    name: Choose template
+    options:
+     - default
+     - dark
+    initial: default
+    icon: mdi:theme-light-dark

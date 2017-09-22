@@ -1,0 +1,102 @@
+#Sensori
+sensor.Indice_UV:
+    icon: mdi:alert-outline
+    friendly_name: Indice UV
+
+sensor.Terremoti_any:
+    friendly_name: Terremoti (7gg, raggio 80km)
+    icon: mdi:earth
+sensor.dark_sky_cloud_coverage:
+    friendly_name: Copertura nuovolosa
+sensor.dark_sky_daily_high_temperature:
+    friendly_name: Massima Giornaliera
+sensor.dark_sky_daily_low_temperature:
+    friendly_name: Minima Giornaliera
+sensor.dark_sky_humidity:
+    friendly_name: Umidità
+sensor.dark_sky_precip_intensity:
+    friendly_name: Intensità precipitazioni
+sensor.dark_sky_precip_probability:
+    friendly_name: Probabilità precipitazioni
+sensor.dark_sky_pressure:
+    friendly_name: Pressione
+sensor.dark_sky_summary:
+    friendly_name: Sommario
+sensor.dark_sky_temperature:
+    friendly_name: Temperatura
+sensor.dark_sky_wind_bearing:
+    friendly_name: Direzione del vento
+sensor.dark_sky_wind_speed:
+    friendly_name: Velocità del vento
+
+sensor.cpu_temp:
+    icon: mdi:temperature-celsius
+sensor.disk_use_:
+    #icon: mdi:sd_card
+    friendly_name: Uso del disco
+    icon: mdi:sd
+sensor.Uptime_OS:
+    icon: mdi:timetable
+
+sensor.transmission_status:
+    icon: mdi:lan
+sensor.transmission_down_speed:
+    icon: mdi:download
+sensor.transmission_up_speed:
+    icon: mdi:upload
+
+sensor.speedtest_download:
+    icon: mdi:download-network
+sensor.speedtest_upload:
+    icon: mdi:upload-network
+
+device_tracker.im:
+    icon: mdi:cellphone-iphone
+    friendly_name: iPhone Michele
+device_tracker.Vittorio_iphone:
+    icon: mdi:cellphone-iphone
+    friendly_name: iPhone Vittorio
+device_tracker.Isabella_iphone:
+    icon: mdi:cellphone-iphone
+    friendly_name: iPhone Isabella
+device_tracker.ElenaSofia_iphone:
+    icon: mdi:cellphone-iphone
+    friendly_name: iPhone Elenasofia
+device_tracker.Enza_iphone:
+    icon: mdi:cellphone-iphone
+    friendly_name: iPhone Enza
+
+binary_sensor.ShareCenterONOFF:
+    icon: mdi:server-network
+
+binary_sensor.AccessPoint_TPlink_1:
+    icon: mdi:router-wireless
+
+binary_sensor.AccessPoint_TPlink_2:
+    icon: mdi:router-wireless
+
+binary_sensor.DVRstatus:
+    icon: mdi:server-security
+    friendly_name: Stato DVR telecamere
+
+sensor.Battery_iPhone:
+    icon: mdi:battery
+#script
+script.rebootdvr:
+    icon: mdi:server-security
+    friendly_name: Riavvio DVR
+
+#sensor
+sensor.yr_wind_speed:
+    icon: mdi:weather-windy
+
+#switch
+switch.win10fisso:
+    hidden: true
+
+switch.WOL:
+    hidden: true
+
+switch.win10onoff:
+      icon: mdi:monitor
+      friendly_name: Windows 10 Fisso

@@ -1,0 +1,14 @@
+- platform: ffmpeg
+  name: Cam Esterna
+  input: -rtsp_transport tcp -i rtsp://10.0.0.179:554/user=admin&password=&channel=1&stream=0.sdp?real_stream--rtp-caching=100
+  scan_interval: 500
+  extra_arguments: -q:v 2
+- platform: ffmpeg
+  name: Cam Interna
+  input: -rtsp_transport tcp -i rtsp://10.0.0.179:554/user=admin&password=&channel=2&stream=0.sdp?real_stream--rtp-caching=100
+  scan_interval: 500
+  extra_arguments: -q:v 2
+#- platform: generic
+#  name: MMAP
+#  still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.im.attributes.latitude }},{{ states.device_tracker.im.attributes.longitude }}&zoom=14&size=500x500&maptype=roadmap&markers=color:blue%7Clabel:P%7C{{ states.device_tracker.im.attributes.latitude }},{{ states.device_tracker.im.attributes.longitude }}
+#  limit_refetch_to_url_change: true

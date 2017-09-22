@@ -1,0 +1,8 @@
+- platform: mqtt
+  name: "Luce1"
+  command_topic: "cmnd/sonoff/power"
+  state_topic: "stat/sonoff/POWER"
+  qos: 1
+  payload_ON: "ON"
+  payload_OFF: "OFF"
+  retain: true

@@ -1,0 +1,63 @@
+
+- alias: testing
+  trigger:
+  - platform: state
+    entity_id: device_tracker.michele_iphone
+    from: "home"
+    to: "not_home"
+  action:
+    service: notify.HASS_notifier_bot
+    data:
+      title: m
+      message: Me ne sono andato!
+##  Uses IFTTT to notify me of bad logins.
+###################################
+
+- alias: Login Failure
+  hide_entity: True
+  trigger:
+    platform: template
+    value_template: "{{ states('persistent_notification.httplogin') != 'unknown' }}"
+
+  action:
+    service: script.ifttt_notify
+    data_template:
+      value1: 'Bad Login: '
+      value2: 'There was a Hack attempt!'
+      value3: 'Go Check the GUI for details.'
+
+
+
+#- alias: temperatura
+#  trigger:
+#  - platform: numeric_state
+#    entity_id: sensor.cpu_temp
+#    above: 56
+#  action:
+#    service: notify.HASS_notifier_bot
+#    data:
+#      title: Attenzione
+#      message: Temperatura processore alta!
+#- alias: stalkerizza out
+#  trigger:
+#  - platform: state
+#    entity_id: device_tracker.iphoneElenaSofia
+#    from: "home"
+#    to: "not_home"
+#  action:
+#    service: notify.HASS_notifier_bot
+#    data:
+#      title: Out
+#      message: iphoneElenaSofia WiFi Out
+
+#- alias: stalkerizza in
+#  trigger:
+#  - platform: state
+#    entity_id: device_tracker.iphoneElenaSofia
+#    from: "not_home"
+#    to: "home"
+#  action:
+#    service: notify.HASS_notifier_bot
+#    data:
+#      title: In
+#      message: iphoneElenaSofia WiFi In

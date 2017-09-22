@@ -1,0 +1,23 @@
+
+- platform: command_line
+  command: ping -W 1 -c 1 10.0.0.249 > /dev/null 2>&1 && echo success || echo fail
+# command: ping -c 1 10.0.0.249 &> /dev/null && echo success || echo fail
+  name: 'ShareCenterONOFF'
+  payload_on: "success"
+  payload_off: "fail"
+- platform: command_line
+  command: ping -W 1 -c 1 10.0.0.251 > /dev/null 2>&1 && echo success || echo fail
+  name: 'AccessPoint_TPlink_1'
+  payload_on: "success"
+  payload_off: "fail"
+- platform: command_line
+  command: ping -W 1 -c 1 10.0.0.252 > /dev/null 2>&1 && echo success || echo fail
+  name: 'AccessPoint_TPlink_2'
+  payload_on: "success"
+  payload_off: "fail"
+- platform: command_line
+  command: ping -W 1 -c 1 10.0.0.179 > /dev/null 2>&1 && echo success || echo fail
+# command: ping -c 1 10.0.0.249 &> /dev/null && echo success || echo fail
+  name: 'DVRstatus'
+  payload_on: "success"
+  payload_off: "fail"
